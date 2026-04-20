@@ -124,7 +124,7 @@ describe("Module: html", () => {
     );
   });
 
-  xit("renders font-faces", async () => {
+  it("renders font-faces", async () => {
     const opts = {
       fontFaces: [
         {
