@@ -2,7 +2,7 @@ describe("Font style and font weight", () => {
   beforeAll(loadGlobals);
 
   it("combine font style and font weight correctly", () => {
-    const doc = new jsPDF();
+    const doc = new jsPDF({ compress: false });
 
     const combine = doc.__private__.combineFontStyleAndFontWeight;
 

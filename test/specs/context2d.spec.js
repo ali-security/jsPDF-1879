@@ -728,7 +728,7 @@ describe("Context2D: standard tests", () => {
   });
 
   it("margin property shorthands", () => {
-    const doc = new jsPDF();
+    const doc = new jsPDF({ compress: false });
     const ctx = doc.context2d;
     expect(ctx.margin).toEqual([0, 0, 0, 0]);
     ctx.margin = 1;
