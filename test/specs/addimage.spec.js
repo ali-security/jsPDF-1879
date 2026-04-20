@@ -33,7 +33,7 @@ describe("Module: addimage", () => {
   });
 
   it("sHashCode", () => {
-    const doc = new jsPDF({ compress: false });
+    const doc = new jsPDF();
 
     expect(doc.__addimage__.sHashCode()).toEqual(0);
     expect(doc.__addimage__.sHashCode("testtest")).toEqual(-1145835484);

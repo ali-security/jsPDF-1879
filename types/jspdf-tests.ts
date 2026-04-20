@@ -18,7 +18,7 @@ import {
 } from "jspdf";
 
 function pubsub() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   const token = doc.internal.events.subscribe("topic", (a, b) => {}, true);
   doc.internal.events.unsubscribe(token);
   doc.internal.events.publish("topic", 1, "foo");
@@ -45,7 +45,7 @@ function classes() {
 }
 
 function test_simple_two_page_document() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text("Hello world!", 20, 20);
   doc.text("This is client-side Javascript, pumping out a PDF.", 20, 20);
   doc.addPage();
@@ -54,7 +54,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_add_pages_with_different_format() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text("Hello world!", 20, 20);
   doc.addPage("a5", "l");
   doc.text("Do you like that?", 20, 20);
@@ -72,7 +72,7 @@ function test_landscape() {
 }
 
 function test_metadata() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text(
     "This PDF has a title, subject, author, keywords and a creator.",
     20,
@@ -89,7 +89,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_user_input() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text(
     "This PDF has a title, subject, author, keywords and a creator.",
     20,
@@ -106,7 +106,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_font_sizes() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.setFontSize(22);
   doc.text("This is a title", 20, 20);
   doc.setFontSize(16);
@@ -115,13 +115,13 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_font() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text("This is the default font.", 20, 20);
   doc.setFont("courier");
 }
 
 function test_text_colors() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.setTextColor(100);
   doc.setTextColor(150);
   doc.setTextColor(255, 0, 0);
@@ -160,7 +160,7 @@ function test_font_metrics_based_line_sizing_split() {
 }
 
 function test_rect_squares() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.rect(20, 20, 10, 10); // empty square
   doc.rect(40, 20, 10, 10, "F"); // filled square
   doc.setDrawColor(255, 0, 0);
@@ -180,7 +180,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_lines() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.line(20, 20, 60, 20); // horizontal line
   doc.setLineWidth(0.5);
   doc.line(20, 25, 60, 25);
@@ -201,7 +201,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_circles_ellipses() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.ellipse(40, 20, 10, 5);
   doc.setFillColor(0, 0, 255);
   doc.ellipse(80, 20, 10, 5, "F");
@@ -213,7 +213,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_triangles() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.triangle(60, 100, 60, 120, 80, 110, "FD");
   doc.setLineWidth(1);
   doc.setDrawColor(255, 0, 0);
@@ -235,7 +235,7 @@ function test_images() {
   };
 
   const createPDF = function(imgData: string) {
-  const doc = new jsPDF({ compress: false });
+    const doc = new jsPDF();
     doc.addImage(imgData, "JPEG", 10, 10, 50, 50, "monkey"); // Cache the image using the alias 'monkey'
     doc.addImage("monkey", 70, 10, 100, 120); // use the cached 'monkey' image, JPEG is optional regardless
     doc.addImage({
@@ -333,7 +333,7 @@ function test_context2d_warnsign() {
 }
 
 function test_context2d_fields() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
 
   const ctx = doc.canvas.getContext("2d");
 
@@ -359,7 +359,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_context2d_functions() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.context2d.moveTo(1, 1);
   doc.context2d.lineTo(1, 1);
   doc.context2d.quadraticCurveTo(1, 1, 1, 1);
@@ -397,7 +397,7 @@ function test_outline() {
 }
 
 function test_page_operations() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text("Text that will end up on page 2", 20, 20);
   doc.addPage();
   doc.text("Text that will end up on page 1", 20, 20);
@@ -409,7 +409,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_displayMode() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.setDisplayMode("fullheight");
   doc.setDisplayMode("fullwidth");
   doc.setDisplayMode("fullpage");
@@ -427,7 +427,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_put_total_pages() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   const totalPagesExp = "{totalPages}";
 
   doc.text("Page 1 of {totalPages}", 10, 10);
@@ -441,14 +441,14 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_autoprint() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text("This is a test", 10, 10);
   doc.autoPrint();
   doc.autoPrint({ variant: "javascript" });
 }
 
 function test_viewerpreferences() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.text("This is a test", 10, 10);
   doc.viewerPreferences({ HideToolbar: true });
   doc.viewerPreferences({ HideMenubar: true });
@@ -469,12 +469,12 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_arabic() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.processArabic("ددد");
 }
 
 function test_split_text_to_size() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.setFont("Courier");
 
   doc.getTextWidth("Lorem Ipsum");
@@ -487,13 +487,13 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_setlanguage() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.setLanguage("en-US");
   doc.setLanguage("de-DE");
 }
 
 function test_annotations() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.createAnnotation({
     type: "text",
     title: "note",
@@ -531,7 +531,7 @@ const doc = new jsPDF({ compress: false });
     color: "#ff0000"
   });
 
-  const pdf = new jsPDF({ compress: false });
+  const pdf = new jsPDF();
   const x = 1,
     y = 1,
     i = 1;
@@ -565,7 +565,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_AcroForm() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   const checkBox = doc.AcroForm.CheckBox();
   checkBox.value = "Off";
 
@@ -578,7 +578,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_html() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
 
   doc.html(document.body, {
     callback: function(doc) {},
@@ -590,7 +590,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_addImage() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.addImage({
     imageData: "/image.png",
     x: 0,
@@ -602,7 +602,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_loadFile() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.loadFile("../image.png");
   doc.loadFile("../image.png", false, function(data) {
     return data;
@@ -640,7 +640,7 @@ function test_addImageWithEncryption() {
 }
 
 function test_nullStyleArgument() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   doc.rect(0, 0, 0, 0, null);
   doc.roundedRect(0, 0, 0, 0, 0, 0, null);
   doc.line(0, 0, 0, 0, null);
@@ -651,7 +651,7 @@ const doc = new jsPDF({ compress: false });
 }
 
 function test_addImageWithRGBAData() {
-const doc = new jsPDF({ compress: false });
+  const doc = new jsPDF();
   const rgbaData = new Uint8ClampedArray(16);
   const imageData = {
     data: rgbaData,
